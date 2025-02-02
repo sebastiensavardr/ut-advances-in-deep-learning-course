@@ -38,7 +38,7 @@ class LoRALinear(HalfLinear):
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         # TODO: Forward. Make sure to cast inputs to self.linear_dtype and the output back to x.dtype
-        return super().forward(x) + self.alpha_div_rank / self.lora_b(self.lora_a(x))
+        return super().forward(x) + self.alpha_div_rank * self.lora_b(self.lora_a(x))
 
 
 class LoraBigNet(torch.nn.Module):
