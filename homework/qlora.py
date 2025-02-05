@@ -75,9 +75,9 @@ class QLoRABigNet(torch.nn.Module):
         return self.model(x)
 
 
-def load(path: Path | None) -> QLoRALinear:
+def load(path: Path | None) -> QLoRABigNet:
     # Since we have additional layers, we need to set strict=False in load_state_dict
-    net = QLoRALinear()
+    net = QLoRABigNet()
     if path is not None:
         net.load_state_dict(torch.load(path, weights_only=True), strict=False)
     return net
