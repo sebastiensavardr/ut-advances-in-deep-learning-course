@@ -112,7 +112,6 @@ class BigNet4Bit(torch.nn.Module):
             return self.model(x) + x
 
     def __init__(self):
-       def __init__(self):
         super().__init__()
 
         self.model = torch.nn.Sequential(
