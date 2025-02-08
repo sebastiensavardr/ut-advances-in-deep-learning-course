@@ -26,6 +26,7 @@ class LoRALinear(HalfLinear):
         """
         # TODO: Implement LoRA, initialize the layers, and make sure they are trainable
         # Keep the LoRA layers in float32
+        # refered to code in lecture slides
         super().__init__(in_features, out_features, bias)
         alpha=lora_dim*2#??
         self.lora_a = torch.nn.Linear(in_features, lora_dim, bias=False, dtype=torch.float32)
@@ -34,7 +35,6 @@ class LoRALinear(HalfLinear):
 
         torch.nn.init.kaiming_uniform_(self.lora_a.weight)
         torch.nn.init.zeros_(self.lora_b.weight)
-        #raise NotImplementedError()
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         # TODO: Forward. Make sure to cast inputs to self.linear_dtype and the output back to x.dtype
